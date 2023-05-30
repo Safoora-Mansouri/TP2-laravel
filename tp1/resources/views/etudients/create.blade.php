@@ -9,7 +9,7 @@
         <label for="nom">Nom:</label>
         <input type="text" class="form-control" id="nom" name="nom" required>
         <div class="invalid-feedback">
-            Please enter a name.
+            Please enter a name:
         </div>
     </div>
 
@@ -17,7 +17,7 @@
         <label for="adresse">Adresse:</label>
         <input type="text" class="form-control" id="adresse" name="adresse" required>
         <div class="invalid-feedback">
-            Please enter an address.
+            Please enter an address:
         </div>
     </div>
 
@@ -25,7 +25,7 @@
         <label for="phone">Phone:</label>
         <input type="text" class="form-control" id="phone" name="phone" required>
         <div class="invalid-feedback">
-            Please enter a phone number.
+            Please enter a phone number:
         </div>
     </div>
 
@@ -33,7 +33,7 @@
         <label for="email">Email:</label>
         <input type="email" class="form-control" id="email" name="email" required>
         <div class="invalid-feedback">
-            Please enter a valid email address.
+            Please enter a valid email address:
         </div>
     </div>
 
@@ -41,7 +41,7 @@
         <label for="date_de_naissance">Date de Naissance:</label>
         <input type="date" class="form-control" id="date_de_naissance" name="date_de_naissance" required>
         <div class="invalid-feedback">
-            Please enter a valid date.
+            Please enter a valid date:
         </div>
     </div>
 
@@ -55,7 +55,7 @@
 
         </select>
         <div class="invalid-feedback">
-            Please enter a valid Ville ID.
+            Please enter a valid Ville:
         </div>
     </div>
     <button type="submit" class="btn btn-primary" value="save">Save</button>
