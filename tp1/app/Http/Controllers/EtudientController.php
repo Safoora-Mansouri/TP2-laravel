@@ -120,6 +120,6 @@ class etudientController extends Controller
     public function destroy(Etudient $etudient)
     {
         $etudient->delete();
-        return redirect()->back();
+        return redirect()->route('etudient.index');
     }
 }

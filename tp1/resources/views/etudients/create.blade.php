@@ -58,6 +58,6 @@
             Please enter a valid Ville ID.
         </div>
     </div>
-
-    <button type="submit" class="btn btn-primary" value="save">
-@endsection
+    <button type="submit" class="btn btn-primary" value="save">Save</button>
+  
+        @endsection
