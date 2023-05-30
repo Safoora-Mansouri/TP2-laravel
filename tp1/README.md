@@ -1,3 +1,39 @@
+
+Nom: Safoora Mansouri
+GitHub: https://github.com/Safoora-Mansouri/TP1-laravel.git
+WebDev: https://e2296145.webdev.cmaisonneuve.qc.ca/TP1-laravel/newProject
+
+-------------------------------------------------------------------------------------------------------------------
+documentation:
+
+On this page, you will find two sections: "Etudiant" and "Ville". When you first enter the page, you will see a list of students in the "Etudiant" section. At the top of the section, there is a "Create" button that allows you to create a new student entry. Each student in the list has a "Select" button that you can click to view more details about that particular student. Upon clicking the "Select" button, you will be directed to a detailed page displaying all the information about the student. On this page, you have the option to edit or delete the student's information. If you choose to delete the student, you will be redirected back to the student list. If you decide to update the student's information, the page will refresh, showing the updated details. Additionally, you can navigate back to the student list by clicking the "List" button. The same concept applies to the "Ville" section. You can access both the "Etudiant" and "Ville" pages from the navbar. From the list in the "Ville" section, you can also perform delete and edit actions. Please note that this is a general description based on the concept you provided. The specific implementation and code may vary depending on your application structure and framework.-
+
+--------------------------------------------------------------------------------------------------------------------
+Commands:
+
+- Créer un dossier nommé “Maisonneuve-2296191” :
+	Composer create-project  --prefer-dist Laravel/Laravel Maisonneuve “8.* “
+- Créer les Modèles :
+	Php artisan make :model Etudient -m
+
+	Php artisan make :model Ville -m
+- créer les tables :
+	php artisan make :factory EtudientFactory
+
+	php artisan make :factory VilleFactory
+- Saisir 15 nouvelles villes et 100 nouveaux étudient
+	php artisan tinker
+    	\App\Models\Ville ::factory()->times(15)->create();
+
+	php artisan tinker
+	\App\Models\Etudient ::factory()->times(100)->create();
+- Créez le controleu
+	Php artisan make :controller EtudientController -m Étudient
+        Php artisan make :controller VilletController -m Ville
+
+
+----------------------------------------------------------------------------------------------------------------------
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
