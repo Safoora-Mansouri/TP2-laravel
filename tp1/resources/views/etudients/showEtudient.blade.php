@@ -21,7 +21,7 @@
                     <span class="font-weight-bold">Phone:</span> {{ $etudient->phone }}<br>
                     <span class="font-weight-bold">Email:</span> {{ $etudient->email }}<br>
                     <span class="font-weight-bold">Date de Naissance:</span> {{ $etudient->date_de_naissance }}<br>
-                    <span class="font-weight-bold">Ville ID:</span> {{ $etudient->ville_id }}<br>
+                    <span class="font-weight-bold">Ville:</span> {{ $etudient->ville->nom }}<br>
                     <span class="font-weight-bold">Created At:</span> {{ $etudient->created_at }}<br>
                     <span class="font-weight-bold">Updated At:</span> {{ $etudient->updated_at }}
                 </li>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Etudient;
 use App\Models\Ville;
 
+use Carbon\Carbon;
+
 ////////////////////////////////////////////////////////////
 
 class etudientController extends Controller
@@ -87,8 +89,12 @@ class etudientController extends Controller
      */
     public function edit(Etudient $etudient)
     {
-        return view('etudients.edit', ['etudient' => $etudient]);
+        $etudient->date_de_naissance = Carbon::parse($etudient->date_de_naissance)->format('Y-m-d');
+        $villes = Ville::all();
+        return view('etudients.edit', ['etudient' => $etudient , 'villes' => $villes]);
     }
+
+  
     ////////////////////////////////////////////////////////////////
     /**
      * Update the specified resource in storage.

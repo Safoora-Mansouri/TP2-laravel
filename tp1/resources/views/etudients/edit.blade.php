@@ -40,20 +40,26 @@
 
     <div class="form-group">
         <label for="date_de_naissance">Date de Naissance:</label>
-        <input type="date" class="form-control" id="date_de_naissance" name="date_de_naissance" value="{{ $etudient->date_de_naissance }}" required>
+        <input type="date" id="date_de_naissance" name="date_de_naissance" class="form-control" value="{{ $etudient->date_de_naissance}}">
+
         <div class="invalid-feedback">
             Please enter a valid date of birth.
         </div>
     </div>
 
     <div class="form-group">
-        <label for="ville_id">Ville ID:</label>
-        <input type="number" class="form-control" id="ville_id" name="ville_id" value="{{ $etudient->ville_id }}" required>
-        <div class="invalid-feedback">
-            Please enter a valid Ville ID.
-        </div>
-    </div>
+        <label for="ville_id">Ville:</label>
 
-    <button type="submit" class="btn btn-primary">Update</button>
+        <select class=" form-control" id="ville_id" name="ville_id" required>
+            @foreach($villes as $ville)
+            <option value="{{ $ville->id }}" {{ $etudient->ville_id == $ville->id ? 'selected' : ""}}>{{ $ville->nom }}</option>
+            @endforeach
+
+        </select>
+        <div class="invalid-feedback">
+            Please enter a valid Ville:
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
 </form>
 @endsection

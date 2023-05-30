@@ -50,7 +50,7 @@
 
         <select class=" form-control" id="ville_id" name="ville_id" required>
             @foreach($villes as $ville)
-            <option value="{{ $ville->id }}">{{ $ville->nom }}</option>
+            <option value="{{ $ville->id }}" >{{ $ville->nom }}</option>
             @endforeach
 
         </select>

@@ -19,7 +19,7 @@ class CreateEtudientsTable extends Migration
             $table->string('adresse');
             $table->string('phone');
             $table->string('email');
-            $table->timestamp('date_de_naissance');
+            $table->date('date_de_naissance');
             $table->unsignedBigInteger('ville_id');
             $table->foreign('ville_id')->references('id')->on('villes');
             $table->timestamps();
