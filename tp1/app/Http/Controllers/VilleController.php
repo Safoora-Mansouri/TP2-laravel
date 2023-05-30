@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ville;
+
 ////////////////////////////////////////////////////////////
 class VilleController extends Controller
 {
@@ -51,7 +52,7 @@ class VilleController extends Controller
      */
     public function show(Ville $ville)
     {
-        return view('villes.show', compact('ville'));
+        return view('villes.show', ['ville' => $ville]);
     }
 /////////////////////////////////////////////////////////
     /**
@@ -63,7 +64,7 @@ class VilleController extends Controller
     public function edit($id)
     {
         $ville = Ville::find($id);
-        return view('villes.edit', compact('ville'));
+        return view('villes.edit', ['ville' => $ville]);
     }
 //////////////////////////////////////////////////////////
     /**

@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title','list the ville')
-@section('titleHeader','list the ville')
+@section('title','listn des villes')
+@section('titleHeader','listn des villes')
 @section('content')
-<a href="{{ route('ville.create') }}" class="btn btn-success">Create</a>
+<a href="{{ route('ville.create') }}" class="btn btn-success m-2">Create</a>
 <table class="table">
     <thead>
         <tr>

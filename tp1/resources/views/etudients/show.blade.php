@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','list teh students')
-@section('titleHeader','list teh students')
+@section('title','list des Etudients')
+@section('titleHeader','list des Etudients')
 @section('content')
 <div class="content-wrapper">
     <div class="custom-card">
@@ -17,8 +17,8 @@
                 <span class="font-weight-bold">Updated At:</span> {{ $etudient->updated_at }}
             </li>
         </ul>
-         <a href="{{ route('etudient.index') }}" class="btn btn-primary mt-3">
-            <i class="fas fa-arrow-left"></i> Return
+        <a href="{{ route('etudient.index') }}" class="btn btn-primary mt-3">
+            <i class="fas fa-arrow-left"></i> list des etudients 
         </a>
     </div>
 </div>

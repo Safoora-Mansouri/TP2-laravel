@@ -1,19 +1,22 @@
 @extends('layouts.app')
-@section('title','list teh students')
-@section('titleHeader','list teh students')
+@section('title','list the students')
+@section('titleHeader','list the students')
 @section('content')
 <div class="container">
-    <a href="{{ route('etudient.create') }}" class="btn btn-success">Create</a>
+  
+    <h4 class="text-center p-3" style="background-color: #F7FAFC;">You can see list of the students here . For more details, click on the select button.</h4>
+
+    <a href="{{ route('etudient.create') }}" class="btn btn-success m-2">Create</a>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
-                <th>Adresse</th>
+                <!-- <th>Adresse</th>
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Date de Naissance</th>
-                <th>Ville ID</th>
+                <th>Ville ID</th> -->
             </tr>
         </thead>
         <tbody>
@@ -21,19 +24,20 @@
             <tr>
                 <td>{{ $etudient->id }}</td>
                 <td>{{ $etudient->nom }}</td>
-                <td>{{ $etudient->adresse }}</td>
+
+                <!-- <td>{{ $etudient->adresse }}</td>
                 <td>{{ $etudient->phone }}</td>
                 <td>{{ $etudient->email }}</td>
                 <td>{{ $etudient->date_de_naissance }}</td>
-                <td>{{ $etudient->ville->nom }}</td>
+                <td>{{ $etudient->ville->nom }}</td> -->
                 <td>
                     <div class="butt">
-                        <a href="{{ route('etudient.edit', $etudient->id) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('etudient.destroy', $etudient->id) }}" method="post" class="d-inline">
+                        <a href="{{ route('showEtudiant', $etudient->id) }}" class="btn btn-primary">select</a>
+                        <!-- <form action="{{ route('etudient.destroy', $etudient->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        </form> -->
                     </div>
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','list the ville')
-@section('titleHeader','list the ville')
+@section('title','list des villes')
+@section('titleHeader','list des villes')
 @section('content')
 <div class="result-container resultForm">
     <ul class="list-group">

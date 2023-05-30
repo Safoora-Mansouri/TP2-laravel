@@ -21,7 +21,8 @@ class etudientController extends Controller
             // dd("ok");
             $etudients = Etudient::all();
             // dd($etudient);
-            return view('etudients.index', compact('etudients'));
+            return view('etudients.index', ['etudients' => $etudients]);
+         
         }
     }
     //////////////////////////////////////////////////////////////
@@ -33,7 +34,7 @@ class etudientController extends Controller
     public function create()
     {
         $villes = Ville::all();
-        return view('etudients.create', compact('villes'));
+        return view('etudients.create',['villes' => $villes]);
     }
     /////////////////////////////////////////////////////////////
     /**
@@ -42,7 +43,7 @@ class etudientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,)
+    public function store(Request $request)
     {
         Etudient::create([
             'nom' => $request->nom,
@@ -64,7 +65,7 @@ class etudientController extends Controller
      */
     public function show(Etudient $etudient)
     {
-        return view('etudients.show', compact('etudient'));
+        return view('etudients.show', ['etudient' => $etudient]);
     }
     ////////////////////////////////////////////////////////////////
     /**
@@ -75,9 +76,9 @@ class etudientController extends Controller
      */
     public function showEtudient(Etudient $etudient)
     {
-        return view('etudients.showEtudient', compact('etudient'));
+        return view('etudients.showEtudient', ['etudient' => $etudient]);
     }
-    //////////////////////////
+    //////////////////////////////////////////////////////////////
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,7 +87,7 @@ class etudientController extends Controller
      */
     public function edit(Etudient $etudient)
     {
-        return view('etudients.edit', compact('etudient'));
+        return view('etudients.edit', ['etudient' => $etudient]);
     }
     ////////////////////////////////////////////////////////////////
     /**
@@ -107,7 +108,7 @@ class etudientController extends Controller
             'ville_id' => $request->ville_id
         ]);
 
-        return redirect()->route('etudient.show', $etudient);
+        return redirect()->route('showEtudiant', $etudient);
     }
     ////////////////////////////////////////////////////////////////////
     /**
@@ -119,8 +120,6 @@ class etudientController extends Controller
     public function destroy(Etudient $etudient)
     {
         $etudient->delete();
-
-
         return redirect()->back();
     }
 }

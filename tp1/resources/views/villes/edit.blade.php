@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','edit an ville')
-@section('titleHeader','edit an ville')
+@section('title','edit un ville')
+@section('titleHeader','edit un ville')
 @section('content')
 <form action="{{ route('ville.update', $ville->id) }}" method="POST" class="needs-validation" novalidate>
     @csrf

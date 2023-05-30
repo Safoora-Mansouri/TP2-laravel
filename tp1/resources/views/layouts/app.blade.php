@@ -11,12 +11,32 @@
 </head>
 
 <body>
+
+
     <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div style="text-align: center;">
+                <h5>TP1</h5>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold text-black" href="/">Etudiant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold text-black" href="/ville">Ville</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="col-12 text-center">
-            <h1 class="display-4 mt-5">
+            <h3 class="display-5 mt-5">
                 <!-- {{ config('app.name') }} -->
                 @yield('titleHeader')
-            </h1>
+            </h3>
         </div>
         @yield('content')
     </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Ajouter an ville')
+@section('title','Ajouter un ville')
 @section('titleHeader','Ajouter un ville')
 @section('content')
 
