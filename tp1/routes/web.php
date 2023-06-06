@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\VilleController;
 use App\Http\Controllers\EtudientController;
+use App\Http\Controllers\CustomAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocalizationController;
 
 
 /*
@@ -39,3 +41,16 @@ Route::post('/etudient-store', [EtudientController::class, 'store'])->name('etud
 
 
 Route::get('/etudient/{etudient}', [EtudientController::class, 'showEtudient'])->name('showEtudiant');
+
+
+//auth
+Route::get('registration', [CustomAuthController::class, 'create'])->name('registration');
+Route::post('registration', [CustomAuthController::class, 'store']);
+//age as esme login estefadeh konin laravel mishnaseh, vagarne khodetoon bayad tarif konin.
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('login', [CustomAuthController::class, 'authentication'])->name('login.authentication');
+
+Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
+
+Route::get('user-list', [CustomAuthController::class, 'userList'])->name('user.list')->middleware('auth');
+Route::get('lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
