@@ -31,6 +31,11 @@ class Etudient extends Model
         
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+    
+    public function article()
+    {
+        return $this->hasMany('App\Models\Article', 'etudient_id', 'id');
+    }
 
     public function getEmailAttribute()
     {
