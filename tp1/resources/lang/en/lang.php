@@ -15,4 +15,10 @@ return[
     'text_save' => 'Save',
     'text_blog' => 'Blog',
     'text_users' => 'Users',
+
+
+    //article
+    // 'text_titre' => 'Titre',
 ];
+
+

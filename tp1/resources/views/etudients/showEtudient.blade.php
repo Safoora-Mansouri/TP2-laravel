@@ -3,6 +3,7 @@
 @section('titleHeader','student detailes')
 @section('content')
 <div class="content-wrapper">
+    
 
     <div class="custom-card ">
         <a href="{{ route('etudient.edit', $etudient->id) }}" class="btn btn-primary m-2">Edit</a>

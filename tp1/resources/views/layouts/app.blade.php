@@ -51,6 +51,9 @@
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold text-black" href="/ville">Ville</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold text-black" href="/article">Article</a>
+                        </li>
 
                     </ul>
                 </div>

@@ -8,6 +8,7 @@ use App\Models\Etudient;
 use App\Models\Ville;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 ////////////////////////////////////////////////////////////
 
@@ -47,13 +48,15 @@ class etudientController extends Controller
      */
     public function store(Request $request)
     {
+        $userID = Auth::user()->id;
         Etudient::create([
             'nom' => $request->nom,
             'adresse' => $request->adresse,
             'phone' => $request->phone,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'date_de_naissance' => $request->date_de_naissance,
-            'ville_id' => $request->ville_id
+            'ville_id' => $request->ville_id,
+            'user_id' => $userID,
         ]);
         return redirect()->route('etudient.index');
     }
@@ -77,7 +80,9 @@ class etudientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showEtudient(Etudient $etudient)
+
     {
+       
         return view('etudients.showEtudient', ['etudient' => $etudient]);
     }
     //////////////////////////////////////////////////////////////
@@ -93,8 +98,6 @@ class etudientController extends Controller
         $villes = Ville::all();
         return view('etudients.edit', ['etudient' => $etudient , 'villes' => $villes]);
     }
-
-  
     ////////////////////////////////////////////////////////////////
     /**
      * Update the specified resource in storage.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\VilleController;
 use App\Http\Controllers\EtudientController;
 use App\Http\Controllers\CustomAuthController;
@@ -38,9 +39,21 @@ Route::get('/etudient-create', [EtudientController::class, 'create'])->name('etu
 Route::put('/etudient-update/{etudient}', [EtudientController::class, 'update'])->name('etudient.update');
 Route::get('/etudient-show/{etudient}', [EtudientController::class, 'show'])->name('etudient.show');
 Route::post('/etudient-store', [EtudientController::class, 'store'])->name('etudient.store');
-
-
 Route::get('/etudient/{etudient}', [EtudientController::class, 'showEtudient'])->name('showEtudiant');
+
+Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article-edit/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::delete('/article-delete/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+Route::get('/article-create', [ArticleController::class, 'create'])->name('article.create');
+Route::put('/article-update/{article}', [ArticleController::class, 'update'])->name('article.update');
+Route::get('/article-show/{article}', [ArticleController::class, 'show'])->name('article.show');
+Route::post('/article-store', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/show-article/{article}', [ArticleController::class, 'show'])->name('showArticle');
+
+
+
+
+
 
 
 //auth

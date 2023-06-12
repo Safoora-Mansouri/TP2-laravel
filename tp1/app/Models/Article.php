@@ -12,7 +12,7 @@ class Article extends Model
         'id',
         'titre',
         'contenu',
-        'date',
+        'date_de_creation',
         'langue',
         'etudient_id',
     ];

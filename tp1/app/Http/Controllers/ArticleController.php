@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Etudient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -15,7 +18,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        $userID = Auth::user()->id;
+        $etudiantId = Etudient::where('user_id', $userID)->first()->id;
+
+        return view('articles.index', compact('articles', 'etudiantId'));
     }
 
     /**
@@ -25,7 +32,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        // $etudiants = Etudient::all();
+        return view('articles.create');
     }
 
     /**
@@ -36,7 +44,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userID = Auth::user()->id;
+        $etudiant = Etudient::where('user_id', $userID)->first();
+        // dd($etudiant->id);
+        $article = Article::create([
+            'titre' => $request->titre,
+            'contenu' => $request->contenu,
+            'date_de_creation' => $request->date_de_creation,
+            'langue' => $request->langue,
+            'etudient_id' =>$etudiant->id,
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article created successfully');
     }
 
     /**
@@ -47,7 +66,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -58,7 +77,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $etudiants = Etudient::all();
+        return view('articles.edit', compact('article', 'etudiants'));
     }
 
     /**
@@ -70,7 +90,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update([
+            'titre' => $request->titre,
+            'contenu' => $request->contenu,
+            'date_de_creation' => $request->date_de_creation,
+            'langue' => $request->langue,
+            'etudient_id' => $request->etudient_id,
+        ]);
+
+        return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
     }
 
     /**
@@ -81,6 +109,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('article.index')->with('success', 'Article deleted successfully');
     }
 }
