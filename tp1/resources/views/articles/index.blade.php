@@ -4,6 +4,10 @@
 @section('content')
 
 <div class="container">
+    @if (isset($message))
+      <h3 class="text-danger p-5">{{$message}}</h3>
+
+    @else
     javascript
     Copy code
     <h4 class="text-center p-3" style="background-color: #F7FAFC;">Vous pouvez voir la liste des articles ici. Pour plus de détails, cliquez sur le bouton "Sélectionner".</h4>
@@ -49,5 +53,6 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 @endsection

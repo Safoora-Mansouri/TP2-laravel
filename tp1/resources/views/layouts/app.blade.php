@@ -51,6 +51,7 @@
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold text-black" href="/ville">Ville</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold text-black" href="/article">Article</a>
                         </li>
@@ -61,13 +62,13 @@
         <div class="col-12 text-center">
             <h3 class="display-5 mt-5">
                 <!-- {{ config('app.name') }} -->
-                @yield('titleHeader')
-            </h3>
-        </div>
-        @yield('content')
-    </div>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+                        @yield('titleHeader')
+                        </h3>
+                </div>
+                @yield('content')
+            </div>
+            <!-- Bootstrap JS -->
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </body>
 

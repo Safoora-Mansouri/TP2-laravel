@@ -18,11 +18,19 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        $userID = Auth::user()->id;
-        $etudiantId = Etudient::where('user_id', $userID)->first()->id;
+        $user = Auth::user();
 
-        return view('articles.index', compact('articles', 'etudiantId'));
+        if ($user) {
+            $articles = Article::all();
+            $userID = $user->id;
+            $etudiant = Etudient::where('user_id', $userID)->first();
+            if ($etudiant) {
+                $etudiantId = $etudiant->id;
+                return view('articles.index', compact('articles', 'etudiantId'));
+            }
+        }
+        $message = "You must be logged as an student user to view articles.";
+        return view('articles.index', compact('message'));
     }
 
     /**
@@ -52,7 +60,7 @@ class ArticleController extends Controller
             'contenu' => $request->contenu,
             'date_de_creation' => $request->date_de_creation,
             'langue' => $request->langue,
-            'etudient_id' =>$etudiant->id,
+            'etudient_id' => $etudiant->id,
         ]);
 
         return redirect()->route('article.index')->with('success', 'Article created successfully');
