@@ -1,9 +1,12 @@
 @extends('layouts.app')
-@section('title','list the students')
-@section('titleHeader','list the students')
+@section('title', 'list the students')
+@section('titleHeader', __('lang.text_header_studentList'))
 @section('content')
+
 <div class="container">
-  
+
+    <!-- @lang('lang.text_header_studentList')
+    {{ __('lang.text_header_studentList') }} -->
     <h4 class="text-center p-3" style="background-color: #F7FAFC;">You can see list of the students here . For more details, click on the select button.</h4>
 
     <a href="{{ route('etudient.create') }}" class="btn btn-success m-2">Create</a>

@@ -2,7 +2,7 @@
 @section('title','login')
 @section('titleHeader',trans('lang.text_login'))
 @section('content')
-<div class="raw justify-content-center alert-admissible fade show">
+<div class="row justify-content-center alert-admissible fade show">
     <!-- //payame afarin dorost bood !-->
     <div class="col-6">
 

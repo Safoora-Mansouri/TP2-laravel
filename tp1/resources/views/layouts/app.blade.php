@@ -11,10 +11,6 @@
 </head>
 
 <body>
-
-
-
-
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -46,14 +42,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold text-black" href="/">Etudiant</a>
+                            <a class="nav-link font-weight-bold text-black" href="/">@lang('lang.text_student')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold text-black" href="/ville">Ville</a>
+                            <a class="nav-link font-weight-bold text-black" href="/ville">@lang('lang.text_city')</a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold text-black" href="/article">Article</a>
+                            <a class="nav-link font-weight-bold text-black" href="/article">@lang('lang.text_article')</a>
                         </li>
 
                     </ul>
@@ -62,13 +58,13 @@
         <div class="col-12 text-center">
             <h3 class="display-5 mt-5">
                 <!-- {{ config('app.name') }} -->
-                        @yield('titleHeader')
-                        </h3>
-                </div>
-                @yield('content')
-            </div>
-            <!-- Bootstrap JS -->
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+                @yield('titleHeader')
+            </h3>
+        </div>
+        @yield('content')
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </body>
 

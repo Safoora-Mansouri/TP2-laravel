@@ -6,7 +6,6 @@ use App\Models\Article;
 use App\Models\Etudient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -21,15 +20,17 @@ class ArticleController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            $articles = Article::all();
-            $userID = $user->id;
-            $etudiant = Etudient::where('user_id', $userID)->first();
+            // $articles = Article::all();
+            $articles = Article::selectArticle();
+            $etudiant = Etudient::where('user_id', $user->id)->first();
+
             if ($etudiant) {
                 $etudiantId = $etudiant->id;
                 return view('articles.index', compact('articles', 'etudiantId'));
             }
         }
-        $message = "You must be logged as an student user to view articles.";
+
+        $message = "You must be logged in as a student user to view articles.";
         return view('articles.index', compact('message'));
     }
 
@@ -40,7 +41,6 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        // $etudiants = Etudient::all();
         return view('articles.create');
     }
 
@@ -52,16 +52,20 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $userID = Auth::user()->id;
-        $etudiant = Etudient::where('user_id', $userID)->first();
-        // dd($etudiant->id);
-        $article = Article::create([
-            'titre' => $request->titre,
-            'contenu' => $request->contenu,
-            'date_de_creation' => $request->date_de_creation,
-            'langue' => $request->langue,
-            'etudient_id' => $etudiant->id,
-        ]);
+        $user = Auth::user();
+        $etudiant = Etudient::where('user_id', $user->id)->first();
+
+
+        $article = new Article;
+        $article->titre = $request->titre_en;
+        $article->titre_fr = ucfirst($request->titre_fr);
+        $article->titre_en = ucfirst($request->titre_en);
+        $article->contenu = $request->contenu_en;
+        $article->contenu_fr = $request->contenu_fr;
+        $article->contenu_en = $request->contenu_en;
+        $article->date_de_creation = $request->date_de_creation;
+        $article->etudient_id = $etudiant->id;
+        $article->save();
 
         return redirect()->route('article.index')->with('success', 'Article created successfully');
     }
@@ -74,6 +78,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        
         return view('articles.show', compact('article'));
     }
 
@@ -96,18 +101,47 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
+    // public function update(Request $request, Article $article)
+    // {
+    //     dd($request->titre_fr);
+    //     $article->titre_fr = ucfirst($request->titre_fr);
+    //     $article->titre_en = ucfirst($request->titre_en);
+
+    //     $article->contenu_fr = $request->contenu_fr;
+    //     $article->contenu_en = $request->contenu_en;
+    //     $article->date_de_creation = $request->date_de_creation;
+    //     $article->etudient_id = $request->etudient_id;
+    //     $article->save();
+
+    //     return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
+    // }
+
+    // public function update(Request $request, Article $article)
+    // {
+    //     $article->update([
+    //         'titre' => $request->titre,
+    //         'contenu' => $request->contenu,
+    //         'date_de_creation' => $request->date_de_creation,
+    //         'langue' => $request->langue,
+    //         'etudient_id' => $request->etudient_id,
+    //     ]);
+
+    //     return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
+    // }
     public function update(Request $request, Article $article)
     {
         $article->update([
-            'titre' => $request->titre,
-            'contenu' => $request->contenu,
+            'titre_fr' => ucfirst($request->titre_fr),
+            'titre_en' => ucfirst($request->titre_en),
+            'contenu_fr' => $request->contenu_fr,
+            'contenu_en' => $request->contenu_en,
             'date_de_creation' => $request->date_de_creation,
-            'langue' => $request->langue,
             'etudient_id' => $request->etudient_id,
         ]);
 
         return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.

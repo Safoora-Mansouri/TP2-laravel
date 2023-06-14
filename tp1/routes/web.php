@@ -50,6 +50,18 @@ Route::get('/article-show/{article}', [ArticleController::class, 'show'])->name(
 Route::post('/article-store', [ArticleController::class, 'store'])->name('article.store');
 Route::get('/show-article/{article}', [ArticleController::class, 'show'])->name('showArticle');
 
+////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/document', [DocumentController::class, 'index'])->name('document.index');
+Route::get('/document-edit/{document}', [DocumentController::class, 'edit'])->name('document.edit');
+Route::delete('/document-delete/{document}', [DocumentController::class, 'destroy'])->name('document.destroy');
+Route::get('/document-create', [DocumentController::class, 'create'])->name('document.create');
+Route::put('/document-update/{document}', [DocumentController::class, 'update'])->name('document.update');
+Route::get('/document-show/{document}', [DocumentController::class, 'show'])->name('document.show');
+Route::post('/document-store', [DocumentController::class, 'store'])->name('document.store');
+Route::get('/show-document/{document}', [DocumentController::class, 'show'])->name('showDocument');
+
+
 
 
 
