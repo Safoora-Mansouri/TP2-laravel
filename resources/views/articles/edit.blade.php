@@ -45,17 +45,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="etudient_id">{{ trans('lang.text_etudientId') }} :</label>
-        <select class="form-control" id="etudient_id" name="etudient_id" required>
-            @foreach($etudiants as $etudiant)
-            <option value="{{ $etudiant->id }}" {{ $article->etudient_id == $etudiant->id ? 'selected' : '' }}>{{ $etudiant->nom }}</option>
-            @endforeach
-        </select>
-        <div class="invalid-feedback">
-            {{ trans('lang.text_selectValidStudent') }}
-        </div>
-    </div>
 
     <button type="submit" class="btn btn-primary">{{ trans('lang.text_updatedAt') }}</button>
 </form>

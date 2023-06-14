@@ -31,11 +31,9 @@
             @foreach($articles as $article)
             <tr>
                 <td>{{ $article->id }}</td>
-                @if (Auth::check() && $article->etudient_id == $etudiantId)
-                <td><a href="{{ route('article.edit', ['article' => $article->id]) }}" class="">{{ $article->titre }}</a></td>
-                @else
-                <td>{{ $article->titre }}</td>
-                @endif
+
+                <td><a href="{{ route('article.show', ['article' => $article->id]) }}" class="">{{ $article->titre }}</a></td>
+               
 
 
                 <td>{{ $article->date_de_creation }}</td>

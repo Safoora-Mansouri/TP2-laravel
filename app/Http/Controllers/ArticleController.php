@@ -78,8 +78,16 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        $user = Auth::user();
+         $etudiantId="";
+        if ($user) {
+            $etudiant = Etudient::where('user_id', $user->id)->first();
+            if ($etudiant) {
+                $etudiantId = $etudiant->id;
+            }
+        }
         
-        return view('articles.show', compact('article'));
+        return view('articles.show', compact('article', "etudiantId"));
     }
 
     /**
@@ -90,8 +98,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $etudiants = Etudient::all();
-        return view('articles.edit', compact('article', 'etudiants'));
+        
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -130,16 +138,30 @@ class ArticleController extends Controller
     // }
     public function update(Request $request, Article $article)
     {
-        $article->update([
-            'titre_fr' => ucfirst($request->titre_fr),
-            'titre_en' => ucfirst($request->titre_en),
-            'contenu_fr' => $request->contenu_fr,
-            'contenu_en' => $request->contenu_en,
-            'date_de_creation' => $request->date_de_creation,
-            'etudient_id' => $request->etudient_id,
-        ]);
+        $user = Auth::user();
+        $etudiantId = "";
+        if ($user) {
+            $etudiant = Etudient::where('user_id', $user->id)->first();
+            if ($etudiant) {
+                $etudiantId = $etudiant->id;
+                $article->update([
+                    'titre_fr' => ucfirst($request->titre_fr),
+                    'titre_en' => ucfirst($request->titre_en),
+                    'contenu_fr' => $request->contenu_fr,
+                    'contenu_en' => $request->contenu_en,
+                    'date_de_creation' => $request->date_de_creation,
+                    'etudient_id' => $etudiantId,
+                ]);
+                return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
+            }
+            
+        }
 
-        return redirect()->route('article.show', $article)->with('success', 'Article updated successfully');
+        return
+        redirect()->route('login')->with('error', 'forbidden access');
+       
+
+        
     }
 
 
